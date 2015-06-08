@@ -17,6 +17,23 @@ public class ListDriver {
 		testIntList.insertInFront(-1);
 		testIntList.printList();
 		
+		ListElement<String> targetElement;
+		if(testList.findElement("second element") != null) {
+			System.out.println("Target element found.  Data value: " + 
+					testList.findElement("second element").getData());
+		}
+		else {
+			System.out.println("Target element could not be found");
+		}
+		
+		if(testList.findElement("something that doesn't exist") != null) {
+			System.out.println("Target element found.  Data value: " + 
+					testList.findElement("second element").getData());
+		}
+		else {
+			System.out.println("Target element could not be found");
+		}
+		
 	}
 
 }
