@@ -42,6 +42,12 @@ public class List<T> {
 		currentElement.setNext(new ListElement<T>(t));
 	}
 	
+	/**
+	 * Method findElement returns an element the has the provided data value
+	 * 
+	 * @param t
+	 * @return
+	 */
 	public ListElement<T> findElement(T t) {
 		ListElement<T> currentElement = head;
 		
@@ -89,6 +95,46 @@ public class List<T> {
 		}
 		
 		return false;
+	}
+	
+	/*
+	 * Challenge: Given a singly linked list, devise a time- and space-efficient 
+	 * algorithm to find the mth-to-last element of the list. Implement your algorithm, 
+	 * taking care to handle relevant error conditions. Define mth to last such that
+	 * when m=0 the last element of the list is returned
+	 */
+	
+	public ListElement<T> mthToLast(int mth) {
+		//given n = number of elements in list
+		//mth to last element = n - m
+		
+		//return if the list is empty
+		if(empty()) {
+			return null;
+		}
+		
+		ListElement<T> currentElement = head;
+		int numElements = 1; //since the list is not empty there is at least one element
+		while(currentElement.getNext() != null) {
+			numElements++;
+			currentElement = currentElement.getNext();
+		}
+		
+		
+		if(mth >= numElements) {
+			return null;
+		}
+		
+		currentElement = head;
+		int mthToLast = numElements - mth;
+		int i = 1;
+		while(i < mthToLast) {
+			i++;
+			currentElement = currentElement.getNext();
+		}
+		
+		return currentElement;
+		
 	}
 	
 	/**
